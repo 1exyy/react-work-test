@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+}
+
+body {
+    overflow: hidden;
+    user-select: none;
+}
+
+.d-flex-row {
+    display: flex;
+    flex-direction: row;
+}

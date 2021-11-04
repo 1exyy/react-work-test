@@ -1,0 +1,9 @@
+.counter span{
+    font-size:50px;
+    font-weight: bold;
+}
+.counter{
+    border: 5px double teal;
+    padding: 100px 40px;
+    border-radius: 50%;
+}
