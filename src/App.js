@@ -6,6 +6,7 @@ import Counter from "./components/counter";
 import './App.css';
 
 function App() {
+    var lastClicked = 0;
     let isWait = false;
     let [counter, setCounter] = useState('')
     let [timeObject, setTime] = useState({
@@ -21,7 +22,6 @@ function App() {
 
         fromEvent(startButton, 'click')
             .subscribe(() => {
-
                 if (isWait) {
                     counter.isStopped = false;
                     isWait = false;
@@ -39,9 +39,11 @@ function App() {
 
         fromEvent(waitButton, 'click')
             .subscribe(() => {
-                if (!isWait) {
-                    counter.isStopped = true;
-                    isWait = true;
+                if (onClickCheck(300)) {
+                    if (!isWait) {
+                        counter.isStopped = true;
+                        isWait = true;
+                    }
                 }
             });
 
@@ -78,6 +80,19 @@ function App() {
                 hours: (timeObject.hours <= 9 && timeObject.hours > 0) ? '0' + timeObject.hours : timeObject.hours
             });
         }))
+    }
+
+
+    function onClickCheck(del) {
+        let timeNow = new Date().getTime();
+        if (timeNow < (lastClicked + del)) {
+            lastClicked = timeNow;
+            return true;
+        } else {
+            lastClicked = timeNow;
+            return false;
+        }
+
     }
 
     return (
